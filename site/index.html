@@ -1,13 +1,15 @@
+<!-- https://github.com/rivalcoba/reeditgam.git -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>ReedItgam APP</title>
+	<title>ReediItgam APP</title>
 	<link rel="stylesheet" 
-	href="./vendor/bootstrap/css/bootstrap.css">
+		href="./vendor/bootstrap/css/bootstrap.css">
 	<style>
-		.glyphicon-thumbs-up{cursor: pointer;}
+		.glyphicon-thumbs-up {cursor: pointer;}
 	</style>
+	<link rel="stylesheet" href="./vendor/ngsweetalert/css/sweet-alert.css">
 </head>
 <body ng-app="reeditgam" 
 	ng-controller="mainCtrl">
@@ -16,12 +18,13 @@
 			<ui-view></ui-view>
 		</div>
 	</div>
-	<!--creando plantillas-->
-	<!--plantilla /home.html-->
+	
+	<!-- Creando plantillas -->
+	<!-- Plantilla /home.html -->
 	<script 
-	type="text/ng-template" 
-	id="/home.html">
-	<div class="page-header">
+		type="text/ng-template"
+		id="/home.html">
+			<div class="page-header">
 				<h1>Reeditgam!!!</h1>
 			</div>	
 			<!-- Creando el formulario -->
@@ -54,7 +57,7 @@
 					ng-click="incrementUpvotes(post)"></span>
 				{{post.upvotes}}
 				<span style="font-size:20px; margin-left:10px">
-				<!-- Agregando los links -->
+					<!-- Agregando los links -->
 					<a ng-show="post.link" href="{{post.link}}">
 						{{post.title}}	
 					</a>
@@ -62,12 +65,12 @@
 						{{post.title}}
 					</span>
 				</span>
-			</div>		
+			</div>
 	</script>
-
+	
 	<!-- Cargando Librerias -->
- 	<!-- Es buena practica al final -->
- 	<!-- cargar los scrips -->
+	<!-- Es buena practica al final -->
+	<!-- cargar los scrips -->
 	<!-- Cargando Jquery -->
 	<script
 		src="./vendor/jquery/jquery.js">
@@ -76,20 +79,25 @@
 	<script
 		src="./vendor/bootstrap/js/bootstrap.js">
 		</script>
+	<!-- Cargando sweet alert -->
 	<script 
-	type="text/javascript"
-	src="vendor/angular/angular.js"
-	>
-	</script>
-	<!--Cargando angular-ui-router-->
+		src="./vendor/ngsweetalert/js/sweet-alert.min.js"></script>
+	<!-- Cargando a Angular -->
 	<script 
-	type="text/javascript"
-	src="./vendor/angular-ui-router/angular-ui-router.js">
-	</script>
-	<!--Cargando app.js-->
+		type="text/javascript"
+		src="./vendor/angular/angular.js">
+		</script>
+	<!-- Cargando angular-ui-router -->
 	<script 
-	type="text/javascript"
-	src="scripts/app.js">
-	</script>		
+		type="text/javascript"
+		src="./vendor/angular-ui-router/angular-ui-router.js">
+		</script>
+	<!-- Se carga ngSweetAlert -->
+	<script 
+		src="./vendor/ngsweetalert/js/ngSweetAlert.js"></script>
+	<!-- Cargando app.js -->
+	<script
+		type="text/javascript"
+		src="./scripts/app.js"></script>
 </body>
 </html>
