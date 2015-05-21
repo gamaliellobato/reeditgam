@@ -24,7 +24,7 @@ modulo1.config(
 		$stateProvider.state('posts',{
 			url: "/posts/{id}",
 			templateUrl: "/posts.html",
-			controller: "postsCtrl"
+			controller: "postCtrl"
 		});
 		// Url por defecto
 		$urlRouterProvider.otherwise('home');
@@ -81,7 +81,16 @@ modulo1.controller("mainCtrl",[
 		 		{
 		 			title: $scope.title,
 		 			link: $scope.link,
-		 		 	upvotes: 0
+		 		 	upvotes: 0,
+		 		 	comments: [{
+		 		 		author:"Gustavo",
+		 		 		body: "Me gusto ese link",
+		 		 		upvotes: 0},
+		 		 		{
+		 		 			author: "Keila",
+		 		 			body: "Awesome link",
+		 		 			upvotes: 2
+		 		 		}]
 		 		 });
 		 	// Two-way data binding
 		 	$scope.title = "";
@@ -98,7 +107,13 @@ modulo1.controller("mainCtrl",[
 modulo1.controller("postCtrl",[
 	'$scope',
 	'$stateParams',
-	'posts'],function($scope, $stateParams, posts){
+	'posts',
+	function($scope, $stateParams, posts){
+		$scope.incrementUpvotes = function (comment){
+			comment.upvotes += 1;
+		};
 		// Cuerpo del controlador
-		
-	});
+		//Obteniendo el parametro id de los parametrso del estado de la ruta
+		// pasandolo como argumento al objeto del factory
+		$scope.post = posts.posts[$stateParams.id];
+	}]);
