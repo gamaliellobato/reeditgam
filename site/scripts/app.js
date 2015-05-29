@@ -1,4 +1,4 @@
-console.log("#Gamaliel: Cargo app.js");
+	console.log("#Gamaliel: Cargo app.js");
 // Inyectadon el modulo de ui-router
 // como parametro del arreglo de objetos
 // del modulo
@@ -36,7 +36,9 @@ modulo1.factory('posts',[function(){
 	var o = {
 		posts : [
 			{	
-				title: "post 1", upvotes: 15,
+				id: 0,
+				title: "post 1", 
+				upvotes: 15,
 				comments: [
 					{author: "Karina", body:"Esto esta de pelos.",
 					upvotes:3},
@@ -44,7 +46,8 @@ modulo1.factory('posts',[function(){
 					upvotes:0}]
 			},
 			{	
-				title: "post 2", upvotes: 4,
+				id: 1,
+				title: "post 2", upvotes: 15,
 				comments: [
 					{author: "Coco", body:"Esto es asombroso.",
 					upvotes:5},
@@ -79,6 +82,7 @@ modulo1.controller("mainCtrl",[
 		 	}
 		 	$scope.posts.push(
 		 		{
+		 			id: $scope.posts.length,
 		 			title: $scope.title,
 		 			link: $scope.link,
 		 		 	upvotes: 0,
@@ -109,11 +113,30 @@ modulo1.controller("postCtrl",[
 	'$stateParams',
 	'posts',
 	function($scope, $stateParams, posts){
-		$scope.incrementUpvotes = function (comment){
+		$scope.addUpvote = function (comment){
 			comment.upvotes += 1;
 		};
+		
+
+
+		$scope.addComment = function(){
+			if($scope.body === '')
+				return ;
+			$scope.post.comments.push({
+				body: $scope.body,
+				author: "Gamaliel",//todo: cambiar por usuario logeado
+				upvotes: 0
+			});
+
+			$scope.body = "";
+		};
+
 		// Cuerpo del controlador
 		//Obteniendo el parametro id de los parametrso del estado de la ruta
 		// pasandolo como argumento al objeto del factory
 		$scope.post = posts.posts[$stateParams.id];
 	}]);
+
+
+
+

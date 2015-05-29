@@ -51,6 +51,7 @@
 		 type="submit">Post</button>
 		
 	</form>
+	
 	<!-- Se renderean post -->
 	<div ng-repeat="post in posts | orderBy: '-upvotes'">
 		<span class="glyphicon glyphicon-thumbs-up"
@@ -67,7 +68,7 @@
 			
 		</span>
 		<span>
-			<a href="#/posts/{{$index}}">
+			<a href="#/posts/{{post.id}}">
 			comentarios
 		</span>
 		
@@ -91,9 +92,24 @@
     		</span>
     	</h3>
     </div>
+    
+    <!--Formulario para agregar comentario a  cada post-->
+    <form ng-submit="addComment()" 
+    style="margin-top:30px">
+	    <h3>Agregar un nuevo comentario</h3>
+	    <div class="form-group">
+	    	<input type="text" class="form-control"
+	    	placeholder="Comentario"
+	    	ng-model="body"/>
+	    </div>
+	    <button type="submit" 
+	    class="btn btn-primary">Publicar comentario</button>
+	</form>
+
     <div
     	ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-    	<span class="glyphicon glyphicon-thumbs-up"></span>
+    	<span class="glyphicon glyphicon-thumbs-up"
+    		 ng-click="addUpvote(comment)"></span>
     	{{comment.upvotes}} - por {{comment.author}}
     	<span style="font-size:20px; margin-left:10px;">
     		{{comment.body}}
