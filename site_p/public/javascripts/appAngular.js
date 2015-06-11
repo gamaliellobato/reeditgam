@@ -1,4 +1,4 @@
-	console.log("#Gamaliel: Cargo app.js");
+console.log("#Gamaliel: Cargo app.js");
 // Inyectadon el modulo de ui-router
 // como parametro del arreglo de objetos
 // del modulo

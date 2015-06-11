@@ -112,16 +112,20 @@ modulo1.controller("postCtrl",[
 	'$scope',
 	'$stateParams',
 	'posts',
-	function($scope, $stateParams, posts){
+	'sweet',
+	function($scope, $stateParams, posts, sweet){
 		$scope.addUpvote = function (comment){
 			comment.upvotes += 1;
 		};
 		
-
-
 		$scope.addComment = function(){
-			if($scope.body === '')
+			if(!$scope.body || $scope.body === "")
+			{
+				//alert("No se permite postear titulos vacios");
+				sweet.show("No se permiten comentarios vacios");
 				return ;
+			}
+
 			$scope.post.comments.push({
 				body: $scope.body,
 				author: "Gamaliel",//todo: cambiar por usuario logeado
